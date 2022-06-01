@@ -162,7 +162,7 @@ define(['./workbox-461a00f8'], (function (workbox) { 'use strict';
     "url": "/js/core.appstore.aa08dff485fd9d0d3ee4.js",
     "revision": null
   }, {
-    "url": "/js/core.bot.885cace351b18822eb8a.js",
+    "url": "/js/core.bot.2fa72b9d7995f0406c5b.js",
     "revision": null
   }, {
     "url": "/js/core.cashier.c47a183d9995a2cad3cd.js",
@@ -255,7 +255,7 @@ define(['./workbox-461a00f8'], (function (workbox) { 'use strict';
     "url": "/js/core.main~components_src_components_l.604e5e7781af51baa156.js",
     "revision": null
   }, {
-    "url": "/js/core.main~s.56d8ef63f2790fec8363.js",
+    "url": "/js/core.main~s.9be4041f25199498f79f.js",
     "revision": null
   }, {
     "url": "/js/core.reality-check-modal.e8a5acd3d813a47130e2.js",
@@ -348,16 +348,16 @@ define(['./workbox-461a00f8'], (function (workbox) { 'use strict';
     "url": "/js/core.vendors-node_modules_web-push-notifications_lib_index_js.bd027dd80524ed7ba87a.js",
     "revision": null
   }, {
-    "url": "/js/core.welcome-modal~Ap.59bf186c0c5aeb1ee001.js",
+    "url": "/js/core.welcome-modal~Ap.30dbc659b47f8435b0ff.js",
     "revision": null
   }, {
-    "url": "/js/core.welcome-modal~Assets_SvgComponents_onboarding_cfds_svg_af25ac66.1a71e744aad539675cd1.js",
+    "url": "/js/core.welcome-modal~Assets_SvgComponents_onboarding_cfds_svg_af25ac66.0472f14ce8f0c16a5992.js",
     "revision": null
   }, {
     "url": "/js/core.welcome-modal~Assets_SvgComponents_onboarding_digital-options-mobile_svg_a765406b.746837f1f5e1f09b43e3.js",
     "revision": null
   }, {
-    "url": "/js/core.welcome-modal~Assets_SvgComponents_onboarding_digital-options_svg_6a6a8cad.807227e37900ca345fbf.js",
+    "url": "/js/core.welcome-modal~Assets_SvgComponents_onboarding_digital-options_svg_6a6a8cad.f48c24fa9583f184adc5.js",
     "revision": null
   }, {
     "url": "/js/core.welcome-modal~Assets_SvgComponents_onboarding_multipliers-mobile_svg_48db1f53.9b6d542e4b970ac5a38c.js",
