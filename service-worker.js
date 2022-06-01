@@ -162,7 +162,7 @@ define(['./workbox-461a00f8'], (function (workbox) { 'use strict';
     "url": "/js/core.appstore.aa08dff485fd9d0d3ee4.js",
     "revision": null
   }, {
-    "url": "/js/core.bot.e3592541c7bd9cbf860d.js",
+    "url": "/js/core.bot.885cace351b18822eb8a.js",
     "revision": null
   }, {
     "url": "/js/core.cashier.c47a183d9995a2cad3cd.js",
@@ -255,7 +255,7 @@ define(['./workbox-461a00f8'], (function (workbox) { 'use strict';
     "url": "/js/core.main~components_src_components_l.604e5e7781af51baa156.js",
     "revision": null
   }, {
-    "url": "/js/core.main~s.942653a122b7cb51c4fd.js",
+    "url": "/js/core.main~s.56d8ef63f2790fec8363.js",
     "revision": null
   }, {
     "url": "/js/core.reality-check-modal.e8a5acd3d813a47130e2.js",
