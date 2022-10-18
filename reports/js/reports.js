@@ -215,7 +215,7 @@ module.exports = __WEBPACK_EXTERNAL_MODULE_react_router_dom__;
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames based on template
-/******/ 			return "reports/js/reports." + chunkId + "." + {"404":"76ff41ee1e4609d810c5","vendors-node_modules_lodash_debounce_index_js-node_modules_prop-types_index_js":"37e0edd4d1df12f2ca93","reports-app":"072dccb2797150873afa","vendors-node_modules_classnames_index_js-node_modules_react-content-loader_dist_react-content-d9aa86":"50edd44f78fa22c8f217","reports-routes":"236ec88453be3eb8d4d9","vendors-node_modules_moment_moment_js":"cb309ae590cfa38e865c","two-month-picker":"52221aac8852dd725a7d"}[chunkId] + ".js";
+/******/ 			return "reports/js/reports." + chunkId + "." + {"404":"76ff41ee1e4609d810c5","vendors-node_modules_lodash_debounce_index_js-node_modules_prop-types_index_js":"37e0edd4d1df12f2ca93","reports-app":"072dccb2797150873afa","vendors-node_modules_classnames_index_js-node_modules_react-content-loader_dist_react-content-d9aa86":"951f587ae244d81d4bb0","reports-routes":"236ec88453be3eb8d4d9","vendors-node_modules_moment_moment_js":"cb309ae590cfa38e865c","two-month-picker":"52221aac8852dd725a7d"}[chunkId] + ".js";
 /******/ 		};
 /******/ 	})();
 /******/ 	
@@ -224,7 +224,7 @@ module.exports = __WEBPACK_EXTERNAL_MODULE_react_router_dom__;
 /******/ 		// This function allow to reference all chunks
 /******/ 		__webpack_require__.miniCssF = (chunkId) => {
 /******/ 			// return url for filenames based on template
-/******/ 			return "reports/css/reports." + chunkId + "." + {"reports-app":"aa893bb3b99ee471439f","reports-routes":"e20badb70513819d653f"}[chunkId] + ".css";
+/******/ 			return "reports/css/reports." + chunkId + "." + {"reports-app":"cb3eae51048f9a17f792","reports-routes":"598b074a7a0c135b3e35"}[chunkId] + ".css";
 /******/ 		};
 /******/ 	})();
 /******/ 	
