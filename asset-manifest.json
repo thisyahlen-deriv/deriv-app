@@ -1,6 +1,6 @@
 {
   "main.css": "/css/core.main.df88fcd49cb0c1b6f543.main.css",
-  "main.js": "/js/core.main.11a2ca2c2c10fc3ebbca.js",
+  "main.js": "/js/core.main.69b96c5b68f6c492d9d1.js",
   "bot.css": "/css/core.chunk.bot.dbbcbf79934e1434c9d8.css",
   "bot.js": "/js/core.bot.d25b0d1a59c901bbb02d.js",
   "ar-json.js": "/js/core.ar-json.3ab509622a4bd57a620b.js",
@@ -10,7 +10,7 @@
   "cfd.css": "/css/core.chunk.cfd.90614cd48a10e8f7de18.css",
   "cfd.js": "/js/core.cfd.32b9cb0e2b7c0aa8d0be.js",
   "welcome-modal.js": "/js/core.welcome-modal.7419b4e56fdc37f55dd7.js",
-  "js/core.vendors-node_modules_deriv_deriv-charts_dist_smartcharts_js.js": "/js/core.vendors-node_modules_deriv_deriv-charts_dist_smartcharts_js.a82a0a57615d76b046cd.js",
+  "js/core.vendors-node_modules_deriv_deriv-charts_dist_smartcharts_js.js": "/js/core.vendors-node_modules_deriv_deriv-charts_dist_smartcharts_js.20aec80f7252c2349661.js",
   "css/core.vendors-node_modules_deriv_deriv-api_dist_DerivAPIBasic_js-node_modules_deriv_deriv-onboardin-b8bf69.main.css": "/css/core.vendors-node_modules_deriv_deriv-api_dist_DerivAPIBasic_js-node_modules_deriv_deriv-onboardin-b8bf69.a7e12f5cc63f924a9e3d.main.css",
   "js/core.vendors-node_modules_deriv_deriv-api_dist_DerivAPIBasic_js-node_modules_deriv_deriv-onboardin-b8bf69.js": "/js/core.vendors-node_modules_deriv_deriv-api_dist_DerivAPIBasic_js-node_modules_deriv_deriv-onboardin-b8bf69.846ca4599b0a693a2db9.js",
   "js/core.vendors-node_modules_contentpass_zxcvbn_lib_main_js.js": "/js/core.vendors-node_modules_contentpass_zxcvbn_lib_main_js.fe273230b4457d1e617b.js",
