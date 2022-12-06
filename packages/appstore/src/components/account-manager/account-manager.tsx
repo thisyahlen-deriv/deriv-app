@@ -92,16 +92,19 @@ const AccountManager = ({
                         </Button>
 
                         {platform === CFD_PLATFORMS.DXTRADE && (
-                            <a
-                                className='dc-btn cfd-account-card__account-selection cfd-account-card__account-selection--primary'
-                                style={{ margin: '0', width: '100%', height: '3.4rem' }}
-                                type='button'
-                                href={dxtrade_link}
-                                target='_blank'
-                                rel='noopener noreferrer'
-                            >
+                            // <a
+                            //     className='dc-btn cfd-account-card__account-selection cfd-account-card__account-selection--primary'
+                            //     style={{ margin: '0', width: '100%', height: '3.4rem' }}
+                            //     type='button'
+                            //     href={dxtrade_link}
+                            //     target='_blank'
+                            //     rel='noopener noreferrer'
+                            // >
+                            //     <Localize i18n_default_text='Trade' />
+                            // </a>
+                            <Button primary onClick={onClickTrade}>
                                 <Localize i18n_default_text='Trade' />
-                            </a>
+                            </Button>
                         )}
                         {platform === CFD_PLATFORMS.MT5 && (
                             <Button primary onClick={onClickTrade}>

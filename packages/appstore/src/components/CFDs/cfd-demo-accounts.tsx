@@ -160,6 +160,7 @@ const CFDDemoAccounts = ({ isDerivedVisible, isFinancialVisible, current_list }:
                                                         );
                                                     }}
                                                     onClickTrade={() => {
+                                                        setAppstorePlatform(account.platform);
                                                         toggleMT5TradeModal();
                                                         setMT5TradeAccount(existing_account);
                                                     }}

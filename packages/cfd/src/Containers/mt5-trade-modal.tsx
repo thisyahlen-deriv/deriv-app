@@ -14,12 +14,29 @@ import {
 } from '@deriv/components';
 import { connect } from '../Stores/connect';
 import RootStore from '../Stores/index';
-import { localize } from '@deriv/translations';
+import { localize, Localize } from '@deriv/translations';
 import { DetailsOfEachMT5Loginid } from '@deriv/api-types';
 import { CFDAccountCopy } from '../Components/cfd-account-copy';
-import { TAccountIconValues, TPasswordBoxProps, TTradingPlatformAccounts } from '../Components/props.types';
-import { CFD_PLATFORMS, getCFDAccountDisplay, getCFDPlatformLabel, getUrlBase, getCFDAccountKey } from '@deriv/shared';
-import { getPlatformMt5DownloadLink, getMT5WebTerminalLink } from '../Helpers/constants';
+import {
+    TAccountIconValues,
+    TPasswordBoxProps,
+    TTradingPlatformAccounts,
+    TCFDDashboardContainer,
+} from '../Components/props.types';
+import {
+    CFD_PLATFORMS,
+    getCFDAccountDisplay,
+    getCFDPlatformLabel,
+    getUrlBase,
+    getCFDAccountKey,
+    isMobile,
+} from '@deriv/shared';
+import {
+    getPlatformMt5DownloadLink,
+    getMT5WebTerminalLink,
+    getDXTradeWebTerminalLink,
+    getPlatformDXTradeDownloadLink,
+} from '../Helpers/constants';
 
 type TMT5TradeModalProps = {
     mt5_trade_account: Required<DetailsOfEachMT5Loginid>;
@@ -36,11 +53,19 @@ type TMT5TradeModalProps = {
         arg5: string | undefined
     ) => void;
     toggleModal: () => void;
+    platform: 'mt5' | 'dxtrade';
+    dxtrade_tokens: TCFDDashboardContainer['dxtrade_tokens'];
+    accountType: string;
 };
 
 export type TSpecBoxProps = {
     value: string | undefined;
     is_bold?: boolean;
+};
+
+type TDxtradeDesktopDownloadProps = {
+    accountType: string;
+    dxtrade_tokens: TCFDDashboardContainer['dxtrade_tokens'];
 };
 
 const PasswordBox = ({ platform, onClick }: TPasswordBoxProps) => (
@@ -105,6 +130,47 @@ const getTitle = (market_type: string, is_eu_user: boolean) => {
     return market_type;
 };
 
+const DxtradeDesktopDownload = ({ accountType, dxtrade_tokens }: TDxtradeDesktopDownloadProps) => {
+    return (
+        <React.Fragment>
+            <a
+                className='cfd-trade-modal__dxtrade-web-terminal'
+                href={getDXTradeWebTerminalLink(
+                    accountType ? 'real' : 'demo',
+                    dxtrade_tokens && dxtrade_tokens[accountType ? 'real' : 'demo']
+                )}
+                target='_blank'
+                rel='noopener noreferrer'
+            >
+                <Icon
+                    className='cfd-dashboard__download-container-dxtrade-button-icon'
+                    icon='IcBrandDxtrade'
+                    width={32}
+                    height={32}
+                />
+                <div className='cfd-trade-modal__dxtrade-web-terminal--text'>
+                    <Text color='colored-background' size='xxs' weight='bold'>
+                        <Localize i18n_default_text='Web terminal' />
+                    </Text>
+                </div>
+            </a>
+        </React.Fragment>
+    );
+};
+
+// const QRCodeBox = ({ platform }: { platform: string }) => {
+//     return (
+//         <DesktopWrapper>
+//             <div className='cfd-dashboard__download-container-qrcode'>
+//                 <QRCode value={mobileDownloadLink(platform, 'android')} size={160} />
+//                 <span className='cfd-dashboard__download-container-qrcode__hint'>
+//                     {localize('Scan the QR code to download the Deriv X Mobile App')}
+//                 </span>
+//             </div>
+//         </DesktopWrapper>
+//     );
+// };
+
 const MT5TradeModal = ({
     mt5_trade_account,
     disableApp,
@@ -114,6 +180,9 @@ const MT5TradeModal = ({
     context,
     onPasswordManager,
     toggleModal,
+    dxtrade_tokens,
+    platform,
+    accountType,
 }: TMT5TradeModalProps) => {
     const getCompanyShortcode = () => {
         if (
@@ -291,6 +360,105 @@ const MT5TradeModal = ({
         </div>
     );
 
+    const dxTradePageContent = () => {
+        return (
+            <div className='cfd-trade-modal-container'>
+                <div className='cfd-trade-modal'>
+                    <Icon icon={account_icons.mt5[is_eu_user ? 'cfd' : mt5_trade_account.market_type]} size={24} />
+                    <div className='cfd-trade-modal__desc'>
+                        <Text size='xs' line_height='l' className='cfd-trade-modal__desc-heading'>
+                            {getHeadingTitle()}
+                        </Text>
+                        {(mt5_trade_account as TTradingPlatformAccounts)?.display_login && (
+                            <Text color='less-prominent' size='xxxs' line_height='xxxs'>
+                                {(mt5_trade_account as TTradingPlatformAccounts)?.display_login}
+                            </Text>
+                        )}
+                    </div>
+                    {mt5_trade_account?.display_balance && (
+                        <Text size='xs' color='profit-success' className='cfd-trade-modal__desc-balance' weight='bold'>
+                            <Money
+                                amount={mt5_trade_account.display_balance}
+                                currency={mt5_trade_account.currency}
+                                has_sign={!!mt5_trade_account.balance && mt5_trade_account.balance < 0}
+                                show_currency
+                            />
+                        </Text>
+                    )}
+                </div>
+                <div className='cfd-trade-modal__login-specs'>
+                    <div className='cfd-trade-modal__login-specs-item'>
+                        <Text className='cfd-trade-modal--paragraph'>{localize('Username')}</Text>
+                        <SpecBox value={(mt5_trade_account as TTradingPlatformAccounts)?.login} />
+                    </div>
+
+                    <div className='cfd-trade-modal__login-specs-item'>
+                        <Text className='cfd-trade-modal--paragraph'>{localize('Password')}</Text>
+                        <div className='cfd-trade-modal--paragraph'>
+                            <PasswordBox
+                                platform='dxtrade'
+                                onClick={() => {
+                                    const account_type = getCFDAccountKey({
+                                        market_type: mt5_trade_account.market_type,
+                                        sub_account_type: mt5_trade_account.sub_account_type,
+                                        platform: CFD_PLATFORMS.DMT5,
+                                        shortcode: mt5_trade_account.landing_company_short,
+                                    });
+                                    onPasswordManager(
+                                        mt5_trade_account?.login,
+                                        getTitle(mt5_trade_account.market_type, is_eu_user),
+                                        mt5_trade_account.account_type,
+                                        account_type,
+                                        (mt5_trade_account as DetailsOfEachMT5Loginid)?.server
+                                    );
+                                    toggleModal();
+                                }}
+                            />
+                        </div>
+                    </div>
+                    <div className='cfd-trade-modal__maintenance'>
+                        <Icon
+                            icon='IcAlertWarning'
+                            size={isMobile() ? 28 : 16}
+                            className='cfd-trade-modal__maintenance-icon'
+                        />
+                        <div className='cfd-trade-modal__maintenance-text'>
+                            <Localize i18n_default_text='Server maintenance starts at 06:00 GMT every Sunday and may last up to 2 hours. You may experience service disruption during this time.' />
+                        </div>
+                    </div>
+                </div>
+                <div className='cfd-trade-modal__download-center-app'>
+                    <div className='cfd-trade-modal__download-center-app--option'>
+                        <Icon icon='IcMt5Logo' size={32} />
+                        <Text className='cfd-trade-modal__download-center-app--option-item' size='xs'>
+                            {localize('Run Deriv X on your browser')}
+                        </Text>
+                        <DxtradeDesktopDownload accountType={accountType} dxtrade_tokens={dxtrade_tokens} />
+                    </div>
+                </div>
+                <div className='cfd-trade-modal__download-center-options'>
+                    <div className='cfd-trade-modal__download-center-options--mobile-links'>
+                        <a href={getPlatformDXTradeDownloadLink('ios')} target='_blank' rel='noopener noreferrer'>
+                            <Icon icon='IcInstallationApple' width={135} height={40} />
+                        </a>
+                        <a href={getPlatformDXTradeDownloadLink('android')} target='_blank' rel='noopener noreferrer'>
+                            <Icon icon='IcInstallationGoogle' width={135} height={40} />
+                        </a>
+                        <a href={getPlatformDXTradeDownloadLink('huawei')} target='_blank' rel='noopener noreferrer'>
+                            <Icon icon='IcInstallationHuawei' width={135} height={40} />
+                        </a>
+                    </div>
+                    <div className='cfd-trade-modal__download-center-options--qrcode'>
+                        <img src={getUrlBase('/public/images/common/mt5_download.png')} width={80} height={80} />
+                        <Text align='center' size='xxs'>
+                            {localize('Scan the QR code to download Deriv MT5.')}
+                        </Text>
+                    </div>
+                </div>
+            </div>
+        );
+    };
+
     return (
         <React.Suspense fallback={<UILoader />}>
             <DesktopWrapper>
@@ -305,7 +473,7 @@ const MT5TradeModal = ({
                     height='709px'
                     exit_classname='cfd-modal--custom-exit'
                 >
-                    {getPageContent()}
+                    {platform === 'mt5' ? getPageContent() : dxTradePageContent()}
                 </Modal>
             </DesktopWrapper>
             <MobileWrapper>
@@ -325,7 +493,9 @@ const MT5TradeModal = ({
     );
 };
 
-export default connect(({ modules, ui }: RootStore) => ({
+export default connect(({ modules: { cfd }, modules, ui, common }: RootStore) => ({
+    dxtrade_tokens: cfd.dxtrade_tokens,
+    platform: common.platform,
     disableApp: ui.disableApp,
     enableApp: ui.enableApp,
     mt5_trade_account: modules.cfd.mt5_trade_account,
