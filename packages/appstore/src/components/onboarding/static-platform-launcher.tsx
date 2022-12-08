@@ -5,15 +5,13 @@ import { isMobile } from '@deriv/shared';
 import { useStores } from 'Stores';
 import classNames from 'classnames';
 import { observer } from 'mobx-react-lite';
-import WalletIcon, { Icons } from 'Assets/svgs/wallet';
+import WalletIcon from 'Assets/svgs/wallet';
 
 import './static-platform-launcher.scss';
+import { PlatformConfig } from 'Constants/platform-config';
 
 type TPlatformLauncherProps = {
-    app_icon: keyof typeof Icons;
-    app_desc?: string;
     is_grey?: boolean;
-    app_title?: string;
     has_applauncher_account?: boolean;
     is_item_blurry?: boolean;
 };
@@ -25,7 +23,7 @@ const PlatformLauncher = ({
     app_title,
     is_item_blurry,
     has_applauncher_account,
-}: TPlatformLauncherProps) => {
+}: TPlatformLauncherProps & Pick<PlatformConfig, 'app_icon' | 'app_desc' | 'app_title'>) => {
     const { client } = useStores();
     const { is_eu, is_eu_country, is_logged_in } = client;
 
