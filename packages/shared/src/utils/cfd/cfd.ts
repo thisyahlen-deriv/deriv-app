@@ -152,7 +152,6 @@ export const getCFDAccountDisplay = ({
     // TODO condition will be changed when card 74063 is merged
     if (market_type === 'synthetic' && platform === CFD_PLATFORMS.DXTRADE) return 'Synthetic';
     if (market_type === 'all' && platform === CFD_PLATFORMS.DXTRADE && is_transfer_form) return '';
-
     return cfd_account_display;
 };
 
