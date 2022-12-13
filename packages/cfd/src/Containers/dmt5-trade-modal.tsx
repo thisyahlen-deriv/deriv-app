@@ -10,16 +10,11 @@ import { DetailsOfEachMT5Loginid } from '@deriv/api-types';
 import { CFD_PLATFORMS, getCFDAccountDisplay, getCFDPlatformLabel, getUrlBase, getCFDAccountKey } from '@deriv/shared';
 import { localize } from '@deriv/translations';
 import { CFDAccountCopy } from '../Components/cfd-account-copy';
-import RootStore from '../Stores/index';
 import { getPlatformMt5DownloadLink, getMT5WebTerminalLink } from '../Helpers/constants';
 
 type TMT5TradeModalProps = {
     mt5_trade_account: Required<DetailsOfEachMT5Loginid>;
-    disableApp: () => void;
-    enableApp: () => void;
     is_eu_user: boolean;
-    is_open: boolean;
-    context: RootStore;
     onPasswordManager: (
         arg1: string | undefined,
         arg2: string,
@@ -28,7 +23,6 @@ type TMT5TradeModalProps = {
         arg5: string | undefined
     ) => void;
     toggleModal: () => void;
-    platform: 'mt5' | 'dxtrade';
     dxtrade_tokens: TCFDDashboardContainer['dxtrade_tokens'];
     accountType: string;
 };
@@ -100,19 +94,7 @@ const getTitle = (market_type: string, is_eu_user: boolean) => {
     return market_type;
 };
 
-const DMT5TradeModal = ({
-    mt5_trade_account,
-    disableApp,
-    enableApp,
-    is_eu_user,
-    is_open,
-    context,
-    onPasswordManager,
-    toggleModal,
-    dxtrade_tokens,
-    platform,
-    accountType,
-}: TMT5TradeModalProps) => {
+const DMT5TradeModal = ({ mt5_trade_account, is_eu_user, onPasswordManager, toggleModal }: TMT5TradeModalProps) => {
     const getCompanyShortcode = () => {
         if (
             (mt5_trade_account.account_type === 'demo' &&

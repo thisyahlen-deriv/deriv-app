@@ -2,14 +2,7 @@ import React from 'react';
 import { Text, Button, Icon, Money, Popover } from '@deriv/components';
 import { TPasswordBoxProps, TTradingPlatformAccounts, TCFDDashboardContainer } from '../Components/props.types';
 import { DetailsOfEachMT5Loginid } from '@deriv/api-types';
-import {
-    CFD_PLATFORMS,
-    getCFDAccountDisplay,
-    getCFDPlatformLabel,
-    getCFDAccountKey,
-    isMobile,
-    isMobileOs,
-} from '@deriv/shared';
+import { CFD_PLATFORMS, getCFDAccountDisplay, getCFDPlatformLabel, getCFDAccountKey, isMobile } from '@deriv/shared';
 import { localize, Localize } from '@deriv/translations';
 import { CFDAccountCopy } from '../Components/cfd-account-copy';
 import { QRCode } from 'react-qrcode';
@@ -117,7 +110,7 @@ const DxtradeDesktopDownload = ({ accountType, dxtrade_tokens }: TDxtradeDesktop
             >
                 <Icon className='cfd-trade-modal__dxtrade-button-icon' icon='IcBrandDxtrade' width={32} height={32} />
                 <div className='cfd-trade-modal__dxtrade-button-text'>
-                    <Text color='colored-background' size='xxs' weight='bold'>
+                    <Text color='colored-background' size={isMobile() ? 'xxxs' : 'xxs'} weight='bold'>
                         <Localize i18n_default_text='Web terminal' />
                     </Text>
                 </div>

@@ -58,15 +58,10 @@ const MT5TradeModal = ({
                     {platform === 'mt5' ? (
                         <DMT5TradeModal
                             mt5_trade_account={mt5_trade_account}
-                            disableApp={disableApp}
-                            enableApp={enableApp}
                             is_eu_user={is_eu_user}
-                            is_open={is_open}
-                            context={context}
                             onPasswordManager={onPasswordManager}
                             toggleModal={toggleModal}
                             dxtrade_tokens={dxtrade_tokens}
-                            platform={platform}
                             accountType={accountType}
                         />
                     ) : (
@@ -93,15 +88,10 @@ const MT5TradeModal = ({
                         {platform === 'mt5' ? (
                             <DMT5TradeModal
                                 mt5_trade_account={mt5_trade_account}
-                                disableApp={disableApp}
-                                enableApp={enableApp}
                                 is_eu_user={is_eu_user}
-                                is_open={is_open}
-                                context={context}
                                 onPasswordManager={onPasswordManager}
                                 toggleModal={toggleModal}
                                 dxtrade_tokens={dxtrade_tokens}
-                                platform={platform}
                                 accountType={accountType}
                             />
                         ) : (
