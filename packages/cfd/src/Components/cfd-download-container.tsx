@@ -22,7 +22,7 @@ type TMobileDownloadProps = {
     platform: TCFDDashboardContainer['platform'];
 };
 
-const mobileDownloadLink = (platform: string, type: 'ios' | 'android' | 'huawei') => {
+export const mobileDownloadLink = (platform: string, type: 'ios' | 'android' | 'huawei') => {
     return platform === CFD_PLATFORMS.MT5 ? getPlatformMt5DownloadLink(type) : getPlatformDXTradeDownloadLink(type);
 };
 

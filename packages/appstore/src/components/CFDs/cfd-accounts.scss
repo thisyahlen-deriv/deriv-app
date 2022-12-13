@@ -885,6 +885,33 @@
             }
         }
     }
+
+    &__maintenance {
+        display: flex;
+        padding-top: 1rem;
+
+        &-icon {
+            padding-right: 0.5rem;
+        }
+
+        &-text {
+            color: var(--text-less-prominent);
+        }
+    }
+
+    &__dxtrade-button {
+        display: flex;
+        background: #000;
+        align-items: center;
+        text-decoration: none;
+        padding: 0.2rem;
+        border-radius: 4px;
+
+        &-text {
+            padding: 0.5rem;
+        }
+    }
+
     &__specs {
         padding: 1.6rem;
         width: 100%;
