@@ -167,11 +167,14 @@ export const getProfitTableColumnsTemplate = (currency: string, items_count: num
     {
         title: localize('Profit / Loss'),
         col_index: 'profit_loss',
-        renderCellContent: ({ cell_value }: TCellContentProps) => (
-            <ProfitLossCell value={cell_value}>
-                <Money has_sign amount={cell_value.replace(/[,]+/g, '')} currency={currency} />
-            </ProfitLossCell>
-        ),
+        renderCellContent: ({ cell_value }: TCellContentProps) => {
+            const amount = cell_value ? cell_value.replace(/[,]+/g, '') : '';
+            return (
+                <ProfitLossCell value={cell_value}>
+                    <Money has_sign amount={amount} currency={currency} />
+                </ProfitLossCell>
+            );
+        },
     },
 ];
 export const getOpenPositionsColumnsTemplate = (currency: string) => [
