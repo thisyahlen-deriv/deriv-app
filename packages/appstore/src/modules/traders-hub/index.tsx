@@ -13,6 +13,7 @@ import { Localize } from '@deriv/translations';
 import classNames from 'classnames';
 
 import './traders-hub.scss';
+import WalletHeader from 'Components/wallet-header';
 
 const TradersHub = () => {
     const { traders_hub, client, ui } = useStores();
@@ -84,6 +85,17 @@ const TradersHub = () => {
             >
                 {can_show_notify && <Notifications />}
                 <div id='traders-hub' className='traders-hub' ref={traders_hub_ref}>
+                    <WalletHeader account_type='demo' />
+                    <WalletHeader currency={'AUD'} jurisdiction={'svg'} />
+                    <WalletHeader currency={'EUR'} jurisdiction={'svg'} />
+                    <WalletHeader currency={'USD'} jurisdiction={'malta'} />
+                    <WalletHeader currency={'BTC'} jurisdiction={'svg'} />
+                    <WalletHeader currency={'ETH'} jurisdiction={'svg'} />
+                    <WalletHeader currency={'USDT'} jurisdiction={'svg'} />
+                    <WalletHeader currency={'eUSDT'} jurisdiction={'svg'} />
+                    <WalletHeader currency={'tUSDT'} jurisdiction={'svg'} />
+                    <WalletHeader currency={'LTC'} jurisdiction={'svg'} />
+                    <WalletHeader currency={'USDC'} jurisdiction={'svg'} />
                     <MainTitleBar />
                     <DesktopWrapper>
                         <div className='traders-hub__main-container'>
