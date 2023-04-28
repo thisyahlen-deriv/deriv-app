@@ -143,6 +143,7 @@ module.exports = function (env) {
                         filename: 'appstore/public/[name].[contenthash][ext]',
                     },
                 },
+
                 {
                     test: /\.svg$/,
                     exclude: /node_modules|public\//,
